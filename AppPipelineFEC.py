@@ -25,9 +25,16 @@ class ComptabiliteApp:
     def process_data(self, start_compte, end_compte, start_date, end_date, min_total, max_total):
         if self.df is None:
             return None, None, None
+        
         # Assurez-vous que la colonne 'EcritureDate' est bien au format datetime
+        self.df['EcritureDate'] = pd.to_numeric(self.df['EcritureDate'], errors='coerce')
         self.df['EcritureDate'] = self.df['EcritureDate'].astype(str).str.strip()
         self.df['EcritureDate'] = pd.to_datetime(self.df['EcritureDate'], format='%Y%m%d', errors='coerce')
+
+        
+        # Assurez-vous que la colonne 'EcritureDate' est bien au format datetime
+        #self.df['EcritureDate'] = self.df['EcritureDate'].astype(str).str.strip()
+        #self.df['EcritureDate'] = pd.to_datetime(self.df['EcritureDate'], format='%Y%m%d', errors='coerce')
 
         # Assurez-vous que la colonne 'EcritureDate' est bien au format datetime
         #self.df['EcritureDate'] = pd.to_datetime(self.df['EcritureDate'], format='%Y%m%d')
