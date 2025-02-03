@@ -29,6 +29,9 @@ class ComptabiliteApp:
         # Assurez-vous que la colonne 'EcritureDate' est bien au format datetime
         self.df['EcritureDate'] = pd.to_datetime(self.df['EcritureDate'], format='%Y%m%d')
         
+        # Afficher le DataFrame après la conversion des dates
+        print(self.df.head())
+        
         # Définir 'EcritureDate' comme index du DataFrame
         self.df.set_index('EcritureDate', inplace=True)
         
